@@ -1,5 +1,5 @@
-require('entity/Entity');
-require('Relation');
+const Entity = require('entity/Entity').Entity;
+const Relation = require('Relation').Relation;
 
 /**
  * Entity serializer.

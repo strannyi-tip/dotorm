@@ -1,4 +1,4 @@
-require('Relation');
+const Relation = require('../Relation').Relation;
 
 export class OneToMany extends Relation
 {

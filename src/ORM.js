@@ -1,8 +1,8 @@
-require('EntitySerializer');
-require('Condition');
-require('entity/ORMReserved');
-require('relation/OneToMany');
-require('relation/OneToOne');
+const EntitySerializer = require('EntitySerializer').EntitySerializer;
+const Condition = require('Condition').Condition;
+const ORMReserved = require('entity/ORMReserved').ORMReserved;
+const OneToMany = require('relation/OneToMany').OneToMany;
+const OneToOne = require('relation/OneToOne').OneToOne;
 
 
 /**

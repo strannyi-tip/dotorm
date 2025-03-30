@@ -1,4 +1,4 @@
-require('entity/Entity');
+const Entity = require('Entity').Entity;
 
 export class ORMReserved extends Entity
 {
