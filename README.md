@@ -1,5 +1,5 @@
 # dotORM
-[![tests](https://github.com/strannyi-tip/dotorm/actions/workflows/npm-test.yml/badge.svg?branch=main)](https://github.com/strannyi-tip/dotorm/actions/workflows/npm-test.yml)
+[![tests](https://github.com/strannyi-tip/dotorm/actions/workflows/npm-test.yml/badge.svg?event=pull_request)](https://github.com/strannyi-tip/dotorm/actions/workflows/npm-test.yml)
 ### Простая ORM для javascript localStorage и sessionStorage
 
 ## Инициализация
