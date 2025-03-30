@@ -1,14 +1,14 @@
-const EntitySerializer = require('EntitySerializer').EntitySerializer;
-const Condition = require('Condition').Condition;
-const ORMReserved = require('entity/ORMReserved').ORMReserved;
-const OneToMany = require('relation/OneToMany').OneToMany;
-const OneToOne = require('relation/OneToOne').OneToOne;
+const EntitySerializer = require('./EntitySerializer');
+const Condition = require('./Condition');
+const ORMReserved = require('./entity/ORMReserved');
+const OneToMany = require('./relation/OneToMany');
+const OneToOne = require('./relation/OneToOne');
 
 
 /**
  * ORM.
  */
-export class ORM
+class ORM
 {
     /**
      * ORM constructor.
@@ -90,9 +90,6 @@ export class ORM
      */
     insert() {
         this._checkIsEntityEmpty();
-        if (this._object.hasOwnProperty('id')) {
-            throw new Error('{id} is a reserved field. Remove id.');
-        }
         const container = this._getContainer();
         this._object.entity = this._object.constructor.name;
         this._object.id = this._getCurrentIncrement(this._entity);
@@ -184,10 +181,10 @@ export class ORM
     }
 
     _createTableIfNotExists() {
-        if (null === this._storage.getItem('orm_reserved')) {
+        if (undefined === this._storage.getItem('orm_reserved')) {
             this._storage.setItem('orm_reserved', JSON.stringify(new ORMReserved));
         }
-        if (null === this._storage.getItem(this._entity)) {
+        if (undefined === this._storage.getItem(this._entity)) {
             this._storage.setItem(this._entity, '[]');
             this._addToReserved(this._entity);
         }
@@ -273,3 +270,5 @@ export class ORM
         return object;
     }
 }
+
+module.exports = ORM;

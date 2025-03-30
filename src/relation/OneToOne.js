@@ -1,6 +1,6 @@
-const Relation = require('../Relation').Relation;
+const Relation = require('../Relation');
 
-export class OneToOne extends Relation
+class OneToOne extends Relation
 {
     constructor(related_entity, related_field, owned_field) {
         super();
@@ -9,3 +9,5 @@ export class OneToOne extends Relation
         this.owned_field = owned_field;
     }
 }
+
+module.exports = OneToOne;

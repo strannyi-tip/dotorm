@@ -1,10 +1,7 @@
-const Entity = require('entity/Entity').Entity;
-const Relation = require('Relation').Relation;
-
 /**
  * Entity serializer.
  */
-export class EntitySerializer
+class EntitySerializer
 {
     /**
      * Serialize entity.
@@ -28,7 +25,12 @@ export class EntitySerializer
      */
     unserialize(string) {
         const json = JSON.parse(string);
-        let object = eval(`new ${json.entity}()`);
+        let object;
+        if (json.entity !== 'Object') {
+            object = eval(`const ${json.entity} = require("./entity/${json.entity}");new ${json.entity}();`);
+        } else {
+            object = {};
+        }
         for (const key in json) {
             if (json.hasOwnProperty(key)) {
                 object[key] = this._recursiveUnserializeField(json[key]);
@@ -41,7 +43,12 @@ export class EntitySerializer
     _recursiveUnserializeField(field) {
         if (field instanceof Object) {
             if (undefined !== field.entity) {
-                let rec_object = eval(`new ${field.entity}()`);
+                let rec_object;
+                if (field.entity !== 'Object') {
+                    rec_object = eval(`const ${field.entity} = require("./entity/${field.entity}");new ${field.entity}();`);
+                } else {
+                    rec_object = {};
+                }
                 for (const f in field) {
                     if (field.hasOwnProperty(f)) {
                         rec_object[f] = this._recursiveUnserializeField(field[f]);
@@ -76,3 +83,5 @@ export class EntitySerializer
         }
     }
 }
+
+module.exports = EntitySerializer;

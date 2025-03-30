@@ -1,9 +1,11 @@
-const Entity = require('Entity').Entity;
+const Entity = require('./Entity');
 
-export class ORMReserved extends Entity
+class ORMReserved extends Entity
 {
     constructor() {
         super('orm_reserved');
         this.increments = {};
     }
 }
+
+module.exports = ORMReserved;

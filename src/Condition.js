@@ -1,4 +1,4 @@
-export class Condition
+class Condition
 {
     constructor(key, func, strict = false) {
         this._key = key;
@@ -13,3 +13,5 @@ export class Condition
         return this._func(object[this._key]);
     }
 }
+
+module.exports = Condition;

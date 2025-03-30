@@ -1,4 +1,4 @@
-export class Entity
+class Entity
 {
     constructor(name) {
         this._table = name;
@@ -23,3 +23,5 @@ export class Entity
         return this._relations;
     }
 }
+
+module.exports = Entity;
