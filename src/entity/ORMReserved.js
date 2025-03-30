@@ -1,6 +1,6 @@
 require('entity/Entity');
 
-class ORMReserved extends Entity
+export class ORMReserved extends Entity
 {
     constructor() {
         super('orm_reserved');

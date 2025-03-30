@@ -1,4 +1,4 @@
-class Relation
+export class Relation
 {
 
 }

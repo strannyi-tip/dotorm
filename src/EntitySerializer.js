@@ -4,7 +4,7 @@ require('Relation');
 /**
  * Entity serializer.
  */
-class EntitySerializer
+export class EntitySerializer
 {
     /**
      * Serialize entity.

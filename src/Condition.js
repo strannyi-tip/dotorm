@@ -1,4 +1,4 @@
-class Condition
+export class Condition
 {
     constructor(key, func, strict = false) {
         this._key = key;

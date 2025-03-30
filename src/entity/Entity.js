@@ -1,4 +1,4 @@
-class Entity
+export class Entity
 {
     constructor(name) {
         this._table = name;

@@ -1,6 +1,6 @@
 require('Relation');
 
-class OneToOne extends Relation
+export class OneToOne extends Relation
 {
     constructor(related_entity, related_field, owned_field) {
         super();

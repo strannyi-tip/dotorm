@@ -8,7 +8,7 @@ require('relation/OneToOne');
 /**
  * ORM.
  */
-class ORM
+export class ORM
 {
     /**
      * ORM constructor.
