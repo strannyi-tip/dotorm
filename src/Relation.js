@@ -1,5 +1,6 @@
-export class Relation
+class Relation
 {
-    constructor() {
-    }
+
 }
+
+module.exports = Relation;
