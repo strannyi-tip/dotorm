@@ -12,6 +12,8 @@ class ORM
 {
     /**
      * ORM constructor.
+     *
+     * @param storage Storage must be localStorage or sessionStorage
      */
     constructor(storage = localStorage) {
         this._storage = storage;
