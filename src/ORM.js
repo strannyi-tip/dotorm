@@ -253,23 +253,45 @@ class ORM
 
     _loadRelations(object) {
         if (0 !== object.relations.length) {
-            for (const field in object.relations) {
-                if (object.relations.hasOwnProperty(field)) {
-                    const relation = object.relations[field];
-                    if (relation instanceof OneToMany) {
-                        if (object.hasOwnProperty(relation.owned_field)) {
-                            object[field] = this._loadOneToMany(relation.related_entity, relation.related_field, object[relation.owned_field]);
-                        }
-                    } else if (relation instanceof OneToOne) {
-                        if (object.hasOwnProperty(relation.owned_field)) {
-                            object[field] = this._loadOneToOne(relation.related_entity, relation.related_field, object[relation.owned_field]);
-                        }
-                    }
-                }
-            }
+            this._inspectRelations(object);
         }
 
         return object;
+    }
+
+    _inspectRelations(object) {
+        for (const field in object.relations) {
+            this._loadRelationByType(field, object);
+        }
+
+        return this;
+    }
+
+    _loadRelationByType(field, object) {
+        if (object.relations.hasOwnProperty(field)) {
+            const relation = object.relations[field];
+            if (relation instanceof OneToMany) {
+                this._loadOneToManyRelation(relation, field, object);
+            } else if (relation instanceof OneToOne) {
+                this._loadOneToOneRelation(relation, field, object);
+            }
+        }
+    }
+
+    _loadOneToManyRelation(relation, field, object) {
+        if (object.hasOwnProperty(relation.owned_field)) {
+            object[field] = this._loadOneToMany(relation.related_entity, relation.related_field, object[relation.owned_field]);
+        }
+
+        return this;
+    }
+
+    _loadOneToOneRelation(relation, field, object) {
+        if (object.hasOwnProperty(relation.owned_field)) {
+            object[field] = this._loadOneToOne(relation.related_entity, relation.related_field, object[relation.owned_field]);
+        }
+
+        return this;
     }
 }
 
