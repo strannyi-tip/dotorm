@@ -45,7 +45,7 @@ class ORM
      *
      * @returns {[]}
      */
-    getAll(limit=0, offset=0) {
+    getAll(limit= 0, offset= 0) {
         this._checkIsEntityEmpty();
         const container = this._getContainer();
         let sliced = container.slice(offset, container.length);
@@ -75,7 +75,7 @@ class ORM
     getOne(id) {
         this._checkIsEntityEmpty();
         const container = this.getAll();
-        const result = container.find((item)=>{
+        const result = container.find((item)=> {
            return item.id === id;
         });
         if (undefined === result) {
@@ -86,7 +86,7 @@ class ORM
     }
 
     /**
-     * Insert new object.
+     * Insert a new object.
      *
      * @returns {*}
      */
@@ -141,7 +141,7 @@ class ORM
     /**
      * Find all ones by conditions.
      *
-     * @param object_conditions Conditions like {id: (id)=>{return id > 0}}
+     * @param object_conditions Conditions like {id: (id)=>{ id > 0 }}
      * @param limit Result count limit
      *
      * @returns {[]}
